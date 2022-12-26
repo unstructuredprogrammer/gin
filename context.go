@@ -169,10 +169,10 @@ func (c *Context) FullPath() string {
 // It executes the pending handlers in the chain inside the calling handler.
 // See example in GitHub.
 func (c *Context) Next() {
-	log.Printf("%#v\n", c.handlers)
 	c.index++
 	for c.index < int8(len(c.handlers)) {
 		c.handlers[c.index](c)
+		log.Printf("%#v\n", c.handlers[c.index])
 		c.index++
 	}
 }
