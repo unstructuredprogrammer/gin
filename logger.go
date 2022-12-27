@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/mattn/go-isatty"
@@ -231,6 +232,10 @@ func LoggerWithConfig(conf LoggerConfig) HandlerFunc {
 	}
 
 	return func(c *Context) {
+		fmt.Println(strings.Repeat("*", 20))
+		fmt.Println("LoggerWithConfig")
+		fmt.Println(strings.Repeat("*", 20))
+
 		// Start timer
 		start := time.Now()
 		path := c.Request.URL.Path

@@ -54,6 +54,10 @@ func CustomRecoveryWithWriter(out io.Writer, handle RecoveryFunc) HandlerFunc {
 		logger = log.New(out, "\n\n\x1b[31m", log.LstdFlags)
 	}
 	return func(c *Context) {
+		fmt.Println(strings.Repeat("*", 20))
+		fmt.Println("CustomRecoveryWithWriter")
+		fmt.Println(strings.Repeat("*", 20))
+
 		defer func() {
 			if err := recover(); err != nil {
 				// Check for a broken connection, as it is not really a
